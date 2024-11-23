@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Http\Filters\Filter;
 use Closure;
 use Exception;
 use Illuminate\Database\ConnectionInterface;
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Throwable;
 
 abstract class BaseRepository
@@ -165,6 +168,22 @@ abstract class BaseRepository
     public function find($id): mixed
     {
         return $this->model->find($id);
+    }
+
+    /**
+     * @param int $page
+     * @param int $perPage
+     * @param Filter $filter
+     * @param array $columns
+     * @return mixed
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function paginate(int $page, int $perPage, Filter $filter, array $columns = ["*"]): mixed
+    {
+        return $this->model
+            ->filter($filter)
+            ->paginate($perPage, $columns, 'page', $page);
     }
 
     /**
