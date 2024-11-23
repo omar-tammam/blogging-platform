@@ -2,9 +2,12 @@
 
 namespace App\Services;
 
+use App\Http\Filters\Filter;
 use App\Repositories\BaseRepository;
 use Closure;
 use Illuminate\Contracts\Queue\EntityNotFoundException;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Throwable;
 
 class BaseService
@@ -40,6 +43,20 @@ class BaseService
         });
     }
 
+
+    /**
+     * @param int $page
+     * @param int $perPage
+     * @param Filter $filter
+     * @param array $columns
+     * @return mixed
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function paginate(int $page, int $perPage, Filter $filter, array $columns = ["*"]): mixed
+    {
+        return $this->repository->paginate($page, $perPage, $filter, $columns);
+    }
 
     /**
      * @param int $id
