@@ -175,14 +175,16 @@ abstract class BaseRepository
      * @param int $perPage
      * @param Filter $filter
      * @param array $columns
+     * @param array $with
+     * @param array $withCount
      * @return mixed
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      */
-    public function paginate(int $page, int $perPage, Filter $filter, array $columns = ["*"]): mixed
+    public function paginate(int $page, int $perPage, Filter $filter, array $columns = ["*"], array $with=[], array $withCount=[]): mixed
     {
         return $this->model
             ->filter($filter)
+            ->with($with)
+            ->withCount($withCount)
             ->paginate($perPage, $columns, 'page', $page);
     }
 
@@ -234,10 +236,10 @@ abstract class BaseRepository
     public function firstOrFailBy(array $filters = [], array $with = [], array $withCount = [], array $columns = ['*']): mixed
     {
         return $this->model
+            ->select($columns)
+            ->where($filters)
             ->with($with)
             ->withCount($withCount)
-            ->where($filters)
-            ->select($columns)
             ->firstOrFail();
     }
 

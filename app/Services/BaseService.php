@@ -49,13 +49,13 @@ class BaseService
      * @param int $perPage
      * @param Filter $filter
      * @param array $columns
+     * @param array $with
+     * @param array $withCount
      * @return mixed
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      */
-    public function paginate(int $page, int $perPage, Filter $filter, array $columns = ["*"]): mixed
+    public function paginate(int $page, int $perPage, Filter $filter, array $columns = ["*"], array $with=[], array $withCount=[]): mixed
     {
-        return $this->repository->paginate($page, $perPage, $filter, $columns);
+        return $this->repository->paginate($page, $perPage, $filter, $columns, $with, $withCount);
     }
 
     /**
