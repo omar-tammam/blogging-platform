@@ -1,0 +1,1541 @@
+{
+	"info": {
+		"_postman_id": "e5bad99a-6692-4215-ada2-468d00786e79",
+		"name": "blogging platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13367951"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "categories",
+							"item": [
+								{
+									"name": "list",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/categories",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"categories"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/categories",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"categories"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:37:11 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:37:11 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"items\": [\n            {\n                \"id\": 1,\n                \"name\": \"test category updated\",\n                \"slug\": \"test_category\"\n            }\n        ],\n        \"pagination\": {\n            \"total\": 1,\n            \"perPage\": 10,\n            \"currentPage\": 1,\n            \"nextPage\": null,\n            \"previousPage\": null\n        }\n    },\n    \"code\": 200\n}"
+										}
+									]
+								},
+								{
+									"name": "add",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test category 3\",\r\n    \"slug\": \"test_category_3\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/categories",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"categories"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"name\": \"test category\",\r\n    \"slug\": \"test_category\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/categories",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"categories"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 15:15:20 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 15:15:20 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"test category\",\n        \"slug\": \"test_category\"\n    },\n    \"code\": 201,\n    \"message\": \"common.resource_added_successfully\"\n}"
+										},
+										{
+											"name": "validation error",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"name\": \"test category 2\",\r\n    \"slug\": null\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/categories",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"categories"
+													]
+												}
+											},
+											"status": "Unprocessable Content",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 15:26:05 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 15:26:05 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"error\",\n    \"message\": \"The slug field is required.\",\n    \"errors\": {\n        \"slug\": [\n            \"The slug field is required.\"\n        ]\n    },\n    \"code\": 422\n}"
+										}
+									]
+								},
+								{
+									"name": "update",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test category updated\",\r\n    \"slug\": \"test_category\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/categories/1",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"categories",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"name\": \"test category updated\",\r\n    \"slug\": \"test_category\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/categories/1",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"categories",
+														"1"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 15:16:09 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 15:16:09 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"test category updated\",\n        \"slug\": \"test_category\"\n    },\n    \"code\": 200\n}"
+										}
+									]
+								},
+								{
+									"name": "view",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/categories/1",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"categories",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/categories/1",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"categories",
+														"1"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 15:21:09 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 15:21:09 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"test category updated\",\n        \"slug\": \"test_category\"\n    },\n    \"code\": 200\n}"
+										}
+									]
+								},
+								{
+									"name": "delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/categories/2",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"categories",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/categories/2",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"categories",
+														"2"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 15:17:02 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 15:17:02 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": [],\n    \"code\": 200,\n    \"message\": \"common.resource_deleted_successfully\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "articles viewers",
+							"item": [
+								{
+									"name": "list",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/articles-viewers?articleId=2",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"articles-viewers"
+											],
+											"query": [
+												{
+													"key": "articleId",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/articles-viewers?articleId=2",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"articles-viewers"
+													],
+													"query": [
+														{
+															"key": "articleId",
+															"value": "2"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 20:25:08 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 20:25:08 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"items\": [\n            {\n                \"logId\": 1,\n                \"viewerIp\": \"127.0.0.1\",\n                \"articleId\": 2,\n                \"createdAt\": \"2024-11-23T00:00:00.000000Z\"\n            }\n        ],\n        \"pagination\": {\n            \"total\": 1,\n            \"perPage\": 10,\n            \"currentPage\": 1,\n            \"nextPage\": null,\n            \"previousPage\": null\n        }\n    },\n    \"code\": 200\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "articles",
+							"item": [
+								{
+									"name": "list",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/articles?categories[]=104",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"articles"
+											],
+											"query": [
+												{
+													"key": "categories[]",
+													"value": "104"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/articles",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"articles"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:43:15 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:43:15 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"items\": [\n            {\n                \"id\": 2,\n                \"title\": \"Article Title test updated\",\n                \"categories\": [],\n                \"viewersCount\": 1\n            },\n            {\n                \"id\": 3,\n                \"title\": \"Article Title test updated\",\n                \"categories\": [\n                    {\n                        \"id\": 3,\n                        \"name\": \"test category 3\",\n                        \"slug\": \"test_category_3\"\n                    }\n                ],\n                \"viewersCount\": 0\n            },\n            {\n                \"id\": 4,\n                \"title\": \"Article Title test\",\n                \"categories\": [],\n                \"viewersCount\": 0\n            },\n            {\n                \"id\": 5,\n                \"title\": \"Article Title test\",\n                \"categories\": [],\n                \"viewersCount\": 0\n            },\n            {\n                \"id\": 6,\n                \"title\": \"Article Title test\",\n                \"categories\": [],\n                \"viewersCount\": 0\n            },\n            {\n                \"id\": 7,\n                \"title\": \"Article Title test\",\n                \"categories\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"test category updated\",\n                        \"slug\": \"test_category\"\n                    }\n                ],\n                \"viewersCount\": 0\n            },\n            {\n                \"id\": 8,\n                \"title\": \"Article Title test\",\n                \"categories\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"test category updated\",\n                        \"slug\": \"test_category\"\n                    }\n                ],\n                \"viewersCount\": 0\n            }\n        ],\n        \"pagination\": {\n            \"total\": 7,\n            \"perPage\": 10,\n            \"currentPage\": 1,\n            \"nextPage\": null,\n            \"previousPage\": null\n        }\n    },\n    \"code\": 200\n}"
+										}
+									]
+								},
+								{
+									"name": "add",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"Article Title test 10\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in elementum quam, at aliquam neque. Donec fermentum rutrum condimentum. Donec feugiat lectus eget scelerisque mollis. Phasellus interdum, felis sed tempus iaculis, purus urna sodales ante, ultricies porta sapien urna vitae neque. Nullam nec hendrerit tortor, in rutrum nibh. Sed eget porttitor mi. Nam dapibus laoreet nisi sed iaculis. Duis tempus commodo blandit. Donec semper sem eu felis luctus, vitae sodales enim maximus. Curabitur bibendum nisi ac felis tempor dictum. Vestibulum dictum ante eget nisi commodo, vel convallis leo rhoncus. Maecenas efficitur dictum congue. Etiam id porta lectus. Vestibulum at ante convallis, malesuada justo ut, molestie tortor. Aliquam aliquet id erat et ultricies. Cras in nunc fringilla, aliquam justo ac, maximus purus.\",\r\n     \"categories\": [1]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/articles",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"articles"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"title\": \"Article Title test\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in elementum quam, at aliquam neque. Donec fermentum rutrum condimentum. Donec feugiat lectus eget scelerisque mollis. Phasellus interdum, felis sed tempus iaculis, purus urna sodales ante, ultricies porta sapien urna vitae neque. Nullam nec hendrerit tortor, in rutrum nibh. Sed eget porttitor mi. Nam dapibus laoreet nisi sed iaculis. Duis tempus commodo blandit. Donec semper sem eu felis luctus, vitae sodales enim maximus. Curabitur bibendum nisi ac felis tempor dictum. Vestibulum dictum ante eget nisi commodo, vel convallis leo rhoncus. Maecenas efficitur dictum congue. Etiam id porta lectus. Vestibulum at ante convallis, malesuada justo ut, molestie tortor. Aliquam aliquet id erat et ultricies. Cras in nunc fringilla, aliquam justo ac, maximus purus.\",\r\n     \"categories\": [1]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/articles",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"articles"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:38:35 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:38:35 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"id\": 8,\n        \"title\": \"Article Title test\",\n        \"categories\": [\n            {\n                \"id\": 1,\n                \"name\": \"test category updated\",\n                \"slug\": \"test_category\"\n            }\n        ],\n        \"viewersCount\": 0\n    },\n    \"code\": 201,\n    \"message\": \"common.resource_added_successfully\"\n}"
+										}
+									]
+								},
+								{
+									"name": "update",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"Article Title test updated\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in elementum quam, at aliquam neque. Donec fermentum rutrum condimentum. Donec feugiat lectus eget scelerisque mollis. Phasellus interdum, felis sed tempus iaculis, purus urna sodales ante, ultricies porta sapien urna vitae neque. Nullam nec hendrerit tortor, in rutrum nibh. Sed eget porttitor mi. Nam dapibus laoreet nisi sed iaculis. Duis tempus commodo blandit. Donec semper sem eu felis luctus, vitae sodales enim maximus. Curabitur bibendum nisi ac felis tempor dictum. Vestibulum dictum ante eget nisi commodo, vel convallis leo rhoncus. Maecenas efficitur dictum congue. Etiam id porta lectus. Vestibulum at ante convallis, malesuada justo ut, molestie tortor. Aliquam aliquet id erat et ultricies. Cras in nunc fringilla, aliquam justo ac, maximus purus.\",\r\n    \"categories\": [3]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/articles/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"articles",
+												"3"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"title\": \"Article Title test updated\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in elementum quam, at aliquam neque. Donec fermentum rutrum condimentum. Donec feugiat lectus eget scelerisque mollis. Phasellus interdum, felis sed tempus iaculis, purus urna sodales ante, ultricies porta sapien urna vitae neque. Nullam nec hendrerit tortor, in rutrum nibh. Sed eget porttitor mi. Nam dapibus laoreet nisi sed iaculis. Duis tempus commodo blandit. Donec semper sem eu felis luctus, vitae sodales enim maximus. Curabitur bibendum nisi ac felis tempor dictum. Vestibulum dictum ante eget nisi commodo, vel convallis leo rhoncus. Maecenas efficitur dictum congue. Etiam id porta lectus. Vestibulum at ante convallis, malesuada justo ut, molestie tortor. Aliquam aliquet id erat et ultricies. Cras in nunc fringilla, aliquam justo ac, maximus purus.\",\r\n    \"categories\": [3]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/articles/3",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"articles",
+														"3"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:41:18 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:41:18 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "57"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"id\": 3,\n        \"title\": \"Article Title test updated\",\n        \"categories\": [\n            {\n                \"id\": 3,\n                \"name\": \"test category 3\",\n                \"slug\": \"test_category_3\"\n            }\n        ],\n        \"viewersCount\": 0\n    },\n    \"code\": 200\n}"
+										}
+									]
+								},
+								{
+									"name": "view",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/articles/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"articles",
+												"3"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/articles/3",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"articles",
+														"3"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:41:37 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:41:37 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"id\": 3,\n        \"title\": \"Article Title test updated\",\n        \"categories\": [\n            {\n                \"id\": 3,\n                \"name\": \"test category 3\",\n                \"slug\": \"test_category_3\"\n            }\n        ],\n        \"viewersCount\": 0\n    },\n    \"code\": 200\n}"
+										}
+									]
+								},
+								{
+									"name": "delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/{{version}}/admin/articles/9",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"admin",
+												"articles",
+												"9"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/admin/articles/9",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"admin",
+														"articles",
+														"9"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:42:17 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 16:42:17 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "57"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": [],\n    \"code\": 200,\n    \"message\": \"common.resource_deleted_successfully\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "articles",
+							"item": [
+								{
+									"name": "list",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/{{version}}/user/articles",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"user",
+												"articles"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/user/articles?search=test",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"user",
+														"articles"
+													],
+													"query": [
+														{
+															"key": "search",
+															"value": "test"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 20:28:55 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 20:28:55 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"items\": [\n            {\n                \"id\": 2,\n                \"title\": \"Article Title test updated\",\n                \"categories\": [],\n                \"viewersCount\": 1\n            },\n            {\n                \"id\": 3,\n                \"title\": \"Article Title test updated\",\n                \"categories\": [\n                    {\n                        \"id\": 3,\n                        \"name\": \"test category 3\",\n                        \"slug\": \"test_category_3\"\n                    }\n                ],\n                \"viewersCount\": 0\n            },\n            {\n                \"id\": 4,\n                \"title\": \"Article Title test\",\n                \"categories\": [],\n                \"viewersCount\": 0\n            },\n            {\n                \"id\": 5,\n                \"title\": \"Article Title test\",\n                \"categories\": [],\n                \"viewersCount\": 0\n            },\n            {\n                \"id\": 6,\n                \"title\": \"Article Title test\",\n                \"categories\": [],\n                \"viewersCount\": 0\n            },\n            {\n                \"id\": 7,\n                \"title\": \"Article Title test\",\n                \"categories\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"test category updated\",\n                        \"slug\": \"test_category\"\n                    }\n                ],\n                \"viewersCount\": 0\n            },\n            {\n                \"id\": 8,\n                \"title\": \"Article Title test\",\n                \"categories\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"test category updated\",\n                        \"slug\": \"test_category\"\n                    }\n                ],\n                \"viewersCount\": 0\n            }\n        ],\n        \"pagination\": {\n            \"total\": 7,\n            \"perPage\": 10,\n            \"currentPage\": 1,\n            \"nextPage\": null,\n            \"previousPage\": null\n        }\n    },\n    \"code\": 200\n}"
+										}
+									]
+								},
+								{
+									"name": "random",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/{{version}}/user/articles",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"user",
+												"articles"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/user/articles/random?page=1",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"user",
+														"articles",
+														"random"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 24 Nov 2024 07:01:03 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 24 Nov 2024 07:01:03 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"items\": [\n            {\n                \"id\": 37,\n                \"title\": \"Article Title Test\",\n                \"categories\": [\n                    {\n                        \"id\": 16,\n                        \"name\": \"odit\",\n                        \"slug\": \"b7734194-ed39-492c-b470-c07747a23fe3\"\n                    }\n                ]\n            },\n            {\n                \"id\": 39,\n                \"title\": \"Cum numquam id molestiae laboriosam sint ducimus.\",\n                \"categories\": [\n                    {\n                        \"id\": 18,\n                        \"name\": \"dolores\",\n                        \"slug\": \"58287fbf-6648-4830-85b2-86dfd1363a62\"\n                    }\n                ]\n            },\n            {\n                \"id\": 41,\n                \"title\": \"Iusto maxime quia cum commodi.\",\n                \"categories\": [\n                    {\n                        \"id\": 39,\n                        \"name\": \"doloribus\",\n                        \"slug\": \"052f1cf3-9aa1-4fa9-a8d8-91c3973b5f9c\"\n                    },\n                    {\n                        \"id\": 40,\n                        \"name\": \"nam\",\n                        \"slug\": \"90dd9829-382c-4417-a0bf-a093d8b0f00d\"\n                    },\n                    {\n                        \"id\": 41,\n                        \"name\": \"nobis\",\n                        \"slug\": \"18aee2cb-0445-45d5-8cab-6d7e1cedd5c9\"\n                    },\n                    {\n                        \"id\": 42,\n                        \"name\": \"repellat\",\n                        \"slug\": \"3bd16485-28e4-4ec4-90fc-4a40da53b94a\"\n                    },\n                    {\n                        \"id\": 43,\n                        \"name\": \"minus\",\n                        \"slug\": \"37eb4c2d-efe0-4117-af0e-ef126472afca\"\n                    },\n                    {\n                        \"id\": 44,\n                        \"name\": \"autem\",\n                        \"slug\": \"def0b067-05d2-46f4-a25b-758d5ea1f7cf\"\n                    },\n                    {\n                        \"id\": 45,\n                        \"name\": \"quod\",\n                        \"slug\": \"c985b9da-6ef6-4db8-8460-3503a6cf47d7\"\n                    },\n                    {\n                        \"id\": 46,\n                        \"name\": \"repudiandae\",\n                        \"slug\": \"dfef151f-86f0-4d1e-a1bd-f5fd2acf3d3f\"\n                    },\n                    {\n                        \"id\": 47,\n                        \"name\": \"sit\",\n                        \"slug\": \"d1c2d3fd-3681-4ee2-8f87-47f4edb95129\"\n                    },\n                    {\n                        \"id\": 48,\n                        \"name\": \"sint\",\n                        \"slug\": \"ef38812e-bf01-4037-84d4-2fa79718c2db\"\n                    },\n                    {\n                        \"id\": 49,\n                        \"name\": \"temporibus\",\n                        \"slug\": \"89c24f6b-025a-496f-a924-1d399035b725\"\n                    },\n                    {\n                        \"id\": 50,\n                        \"name\": \"aliquam\",\n                        \"slug\": \"28b1bbb8-4700-495e-b33d-42d91f15cf51\"\n                    },\n                    {\n                        \"id\": 51,\n                        \"name\": \"explicabo\",\n                        \"slug\": \"bfdb6638-3f10-4301-ac7c-70d771c8a8aa\"\n                    },\n                    {\n                        \"id\": 52,\n                        \"name\": \"vel\",\n                        \"slug\": \"08cce3fb-5c17-4182-8167-13cbead6993f\"\n                    },\n                    {\n                        \"id\": 53,\n                        \"name\": \"quo\",\n                        \"slug\": \"6fb2b336-4116-485f-a724-51e2ec770f3c\"\n                    },\n                    {\n                        \"id\": 54,\n                        \"name\": \"eius\",\n                        \"slug\": \"336376e2-c3c0-4c5e-9ce6-6ba7527a274c\"\n                    },\n                    {\n                        \"id\": 55,\n                        \"name\": \"suscipit\",\n                        \"slug\": \"bfae15f6-6585-4c33-9a06-9db0dd42507a\"\n                    },\n                    {\n                        \"id\": 56,\n                        \"name\": \"pariatur\",\n                        \"slug\": \"30a5d8cd-5909-4a56-8b27-f1010017c744\"\n                    },\n                    {\n                        \"id\": 57,\n                        \"name\": \"rerum\",\n                        \"slug\": \"239e6d8c-d81a-48bf-ac26-366e11c8334d\"\n                    }\n                ]\n            },\n            {\n                \"id\": 42,\n                \"title\": \"Veritatis voluptatibus molestiae voluptas natus autem.\",\n                \"categories\": [\n                    {\n                        \"id\": 58,\n                        \"name\": \"possimus\",\n                        \"slug\": \"586acaa9-4a26-40c2-a135-1e64faa58875\"\n                    },\n                    {\n                        \"id\": 59,\n                        \"name\": \"quia\",\n                        \"slug\": \"d808d4a2-77d3-405b-b480-25a22a58d716\"\n                    },\n                    {\n                        \"id\": 60,\n                        \"name\": \"quasi\",\n                        \"slug\": \"db3772a1-04fd-4fa7-868e-d40dedb9b598\"\n                    },\n                    {\n                        \"id\": 61,\n                        \"name\": \"voluptas\",\n                        \"slug\": \"64819bba-f7bd-4561-ae43-5a28d6a19651\"\n                    },\n                    {\n                        \"id\": 62,\n                        \"name\": \"voluptatum\",\n                        \"slug\": \"7975fcd4-d9de-4568-9286-4e6f702fd7c8\"\n                    },\n                    {\n                        \"id\": 63,\n                        \"name\": \"impedit\",\n                        \"slug\": \"be062ce1-d0c6-4fa5-bc2b-52a363980df6\"\n                    },\n                    {\n                        \"id\": 64,\n                        \"name\": \"quis\",\n                        \"slug\": \"da4e556d-427e-4424-8001-5ba54e8d4fbb\"\n                    },\n                    {\n                        \"id\": 65,\n                        \"name\": \"molestiae\",\n                        \"slug\": \"f2a479af-12ee-4d71-a686-460e46a86b94\"\n                    },\n                    {\n                        \"id\": 66,\n                        \"name\": \"ipsum\",\n                        \"slug\": \"fde36a68-ac12-4028-8943-097ac3f0346d\"\n                    },\n                    {\n                        \"id\": 67,\n                        \"name\": \"quod\",\n                        \"slug\": \"0add593a-98e3-4f2e-8d1f-621a2d23e845\"\n                    },\n                    {\n                        \"id\": 68,\n                        \"name\": \"nihil\",\n                        \"slug\": \"553915f5-e19e-43ad-b1f2-35ce21f23430\"\n                    },\n                    {\n                        \"id\": 69,\n                        \"name\": \"et\",\n                        \"slug\": \"e63bcdb1-338e-46b1-ae0b-f785a6609f9d\"\n                    },\n                    {\n                        \"id\": 70,\n                        \"name\": \"molestias\",\n                        \"slug\": \"87d73965-300d-4124-b065-756e2b32a9f0\"\n                    },\n                    {\n                        \"id\": 71,\n                        \"name\": \"repellendus\",\n                        \"slug\": \"fcfbd8f7-6860-4c4f-a11e-34d79b5630ac\"\n                    },\n                    {\n                        \"id\": 72,\n                        \"name\": \"temporibus\",\n                        \"slug\": \"9d26dd95-8d8c-4a4f-902e-3689cecf95c4\"\n                    },\n                    {\n                        \"id\": 73,\n                        \"name\": \"ut\",\n                        \"slug\": \"5c789740-1b0e-480e-b7ff-d22f3732f161\"\n                    },\n                    {\n                        \"id\": 74,\n                        \"name\": \"eum\",\n                        \"slug\": \"cb019971-4605-4b8d-9c13-b789988ea832\"\n                    },\n                    {\n                        \"id\": 75,\n                        \"name\": \"est\",\n                        \"slug\": \"5324d717-4ed2-4926-9504-2dc22c469ea8\"\n                    },\n                    {\n                        \"id\": 76,\n                        \"name\": \"aspernatur\",\n                        \"slug\": \"678f9fa5-28ae-4b95-98e4-4f65cca4c22c\"\n                    }\n                ]\n            },\n            {\n                \"id\": 43,\n                \"title\": \"Voluptatem ea accusantium est officiis.\",\n                \"categories\": [\n                    {\n                        \"id\": 77,\n                        \"name\": \"enim\",\n                        \"slug\": \"f154d820-e7dd-4fad-a52b-47fe4b28da80\"\n                    },\n                    {\n                        \"id\": 78,\n                        \"name\": \"sint\",\n                        \"slug\": \"16eda0eb-e2b8-41f3-aee9-bc365227d124\"\n                    },\n                    {\n                        \"id\": 79,\n                        \"name\": \"ab\",\n                        \"slug\": \"8d97243d-868e-4339-97c2-3be600dc4037\"\n                    },\n                    {\n                        \"id\": 80,\n                        \"name\": \"quia\",\n                        \"slug\": \"3cc38cdf-d3f8-41bf-8813-9ac44f9156af\"\n                    },\n                    {\n                        \"id\": 81,\n                        \"name\": \"ipsam\",\n                        \"slug\": \"197f67c9-b015-4427-be15-cdadc20cfc9f\"\n                    },\n                    {\n                        \"id\": 82,\n                        \"name\": \"et\",\n                        \"slug\": \"ac61e69d-0db6-497c-9420-b8844e4fedcc\"\n                    },\n                    {\n                        \"id\": 83,\n                        \"name\": \"impedit\",\n                        \"slug\": \"0af62b16-6df8-43bf-bee6-2e5e97667283\"\n                    },\n                    {\n                        \"id\": 84,\n                        \"name\": \"sint\",\n                        \"slug\": \"ebb6ea9c-57ae-4b56-bc4a-d95e4c9aefb1\"\n                    },\n                    {\n                        \"id\": 85,\n                        \"name\": \"ad\",\n                        \"slug\": \"6629ccbb-eea0-4406-a3f7-37ecff5b4451\"\n                    },\n                    {\n                        \"id\": 86,\n                        \"name\": \"in\",\n                        \"slug\": \"8f343d04-2605-4a49-8c13-0523b55263f2\"\n                    },\n                    {\n                        \"id\": 87,\n                        \"name\": \"debitis\",\n                        \"slug\": \"3c7469ce-b858-48b0-9bb5-a6dfa6045729\"\n                    },\n                    {\n                        \"id\": 88,\n                        \"name\": \"aspernatur\",\n                        \"slug\": \"aacb54b4-0b73-495e-b39e-a6399d2b70b3\"\n                    },\n                    {\n                        \"id\": 89,\n                        \"name\": \"maiores\",\n                        \"slug\": \"3f53c21a-3d60-4905-90df-8c6ecbde1ef4\"\n                    },\n                    {\n                        \"id\": 90,\n                        \"name\": \"aut\",\n                        \"slug\": \"1152b646-ad73-43ae-9875-71efde9f04c0\"\n                    },\n                    {\n                        \"id\": 91,\n                        \"name\": \"recusandae\",\n                        \"slug\": \"f9c56b14-fe59-4aad-aeaa-bc12895c5b71\"\n                    },\n                    {\n                        \"id\": 92,\n                        \"name\": \"sit\",\n                        \"slug\": \"5f343558-cfec-454f-bd43-0c1de291fb3b\"\n                    },\n                    {\n                        \"id\": 93,\n                        \"name\": \"distinctio\",\n                        \"slug\": \"9b3fcaba-a40e-49db-a268-967e0de4fb73\"\n                    },\n                    {\n                        \"id\": 94,\n                        \"name\": \"nihil\",\n                        \"slug\": \"c2af9f71-9e78-400e-93c2-ea025f765712\"\n                    },\n                    {\n                        \"id\": 95,\n                        \"name\": \"quisquam\",\n                        \"slug\": \"7d555d5c-5f2e-4e9b-a9c1-509854652925\"\n                    }\n                ]\n            },\n            {\n                \"id\": 47,\n                \"title\": \"Article Title Test Updated\",\n                \"categories\": [\n                    {\n                        \"id\": 116,\n                        \"name\": \"impedit\",\n                        \"slug\": \"1ef2c47f-5c4f-45fd-8675-c9df5d814733\"\n                    }\n                ]\n            },\n            {\n                \"id\": 48,\n                \"title\": \"Quae reiciendis qui atque voluptatibus est ut dicta.\",\n                \"categories\": [\n                    {\n                        \"id\": 117,\n                        \"name\": \"asperiores\",\n                        \"slug\": \"6e70701b-c02a-4a17-a172-1c706a138dc3\"\n                    }\n                ]\n            },\n            {\n                \"id\": 50,\n                \"title\": \"Article Title Test\",\n                \"categories\": [\n                    {\n                        \"id\": 118,\n                        \"name\": \"ab\",\n                        \"slug\": \"ff0e3755-1c5c-48bb-b07c-0ac713d99648\"\n                    }\n                ]\n            },\n            {\n                \"id\": 51,\n                \"title\": \"Article Title Test Updated\",\n                \"categories\": [\n                    {\n                        \"id\": 119,\n                        \"name\": \"temporibus\",\n                        \"slug\": \"e7f1d0c0-e12b-42c8-8516-91a541c6cb28\"\n                    }\n                ]\n            },\n            {\n                \"id\": 52,\n                \"title\": \"Nam cumque consequuntur rem illo.\",\n                \"categories\": [\n                    {\n                        \"id\": 120,\n                        \"name\": \"nisi\",\n                        \"slug\": \"85db4c02-64f8-47b0-9c29-afea90af8340\"\n                    }\n                ]\n            }\n        ],\n        \"pagination\": {\n            \"total\": 17,\n            \"perPage\": 10,\n            \"currentPage\": 1,\n            \"nextPage\": null,\n            \"previousPage\": null\n        },\n        \"randomizedOrder\": [\n            47,\n            43,\n            37,\n            52,\n            39,\n            42,\n            48,\n            41,\n            51,\n            50,\n            40,\n            38,\n            46,\n            56,\n            44,\n            54,\n            55\n        ]\n    },\n    \"code\": 200\n}"
+										},
+										{
+											"name": "second page",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/user/articles/random?page=2&randomizedOrder=43,56,38,44,51,39,55,42,54,46,48,50,52,37,47,41,40",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"user",
+														"articles",
+														"random"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "2"
+														},
+														{
+															"key": "randomizedOrder",
+															"value": "43,56,38,44,51,39,55,42,54,46,48,50,52,37,47,41,40"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 24 Nov 2024 07:26:53 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 24 Nov 2024 07:26:53 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"items\": [\n            {\n                \"id\": 37,\n                \"title\": \"Article Title Test\",\n                \"categories\": [\n                    {\n                        \"id\": 16,\n                        \"name\": \"odit\",\n                        \"slug\": \"b7734194-ed39-492c-b470-c07747a23fe3\"\n                    }\n                ]\n            },\n            {\n                \"id\": 40,\n                \"title\": \"Velit quia perferendis sed et.\",\n                \"categories\": [\n                    {\n                        \"id\": 20,\n                        \"name\": \"et\",\n                        \"slug\": \"faf82167-0f2a-4d92-9174-921bfe120657\"\n                    },\n                    {\n                        \"id\": 21,\n                        \"name\": \"molestias\",\n                        \"slug\": \"f04fc2e6-938d-4e52-83e3-b982d0710f77\"\n                    },\n                    {\n                        \"id\": 22,\n                        \"name\": \"cupiditate\",\n                        \"slug\": \"0c396ae1-28b3-4b79-b356-c9955269c251\"\n                    },\n                    {\n                        \"id\": 23,\n                        \"name\": \"quis\",\n                        \"slug\": \"8e33fe2f-668e-4c11-b1c9-69059c0f5bc1\"\n                    },\n                    {\n                        \"id\": 24,\n                        \"name\": \"doloribus\",\n                        \"slug\": \"05f26520-19ff-47a6-af83-0c5662b8b8a1\"\n                    },\n                    {\n                        \"id\": 25,\n                        \"name\": \"nesciunt\",\n                        \"slug\": \"a15cea08-c503-43c0-9dbb-317f4d2bb6ab\"\n                    },\n                    {\n                        \"id\": 26,\n                        \"name\": \"quia\",\n                        \"slug\": \"b614d462-4211-45c1-99af-62278bb4abd3\"\n                    },\n                    {\n                        \"id\": 27,\n                        \"name\": \"qui\",\n                        \"slug\": \"ae51fd99-cdc3-42d7-9c57-aba7cd845573\"\n                    },\n                    {\n                        \"id\": 28,\n                        \"name\": \"maxime\",\n                        \"slug\": \"a07472f5-1a95-4857-8eeb-9ca07f6c268e\"\n                    },\n                    {\n                        \"id\": 29,\n                        \"name\": \"perferendis\",\n                        \"slug\": \"5506299b-b1e6-4a9a-9280-297228cc58b3\"\n                    },\n                    {\n                        \"id\": 30,\n                        \"name\": \"animi\",\n                        \"slug\": \"52d92066-3a1b-4ee1-aa4d-d47d69fce1ba\"\n                    },\n                    {\n                        \"id\": 31,\n                        \"name\": \"ex\",\n                        \"slug\": \"54930fb8-a1de-463a-aadf-56c47e8b99ae\"\n                    },\n                    {\n                        \"id\": 32,\n                        \"name\": \"consequatur\",\n                        \"slug\": \"72c13fde-250f-40fa-b72e-74ef44d2a069\"\n                    },\n                    {\n                        \"id\": 33,\n                        \"name\": \"qui\",\n                        \"slug\": \"7e350194-4ec3-42e7-90b2-b9cbe91ba510\"\n                    },\n                    {\n                        \"id\": 34,\n                        \"name\": \"et\",\n                        \"slug\": \"2ccff8d6-76ab-4e42-b0a6-9ead155cac76\"\n                    },\n                    {\n                        \"id\": 35,\n                        \"name\": \"unde\",\n                        \"slug\": \"6754e9f0-7301-43c6-b249-cd91e2957a2f\"\n                    },\n                    {\n                        \"id\": 36,\n                        \"name\": \"quidem\",\n                        \"slug\": \"5087a1be-93d1-45df-b66f-ce280c79340e\"\n                    },\n                    {\n                        \"id\": 37,\n                        \"name\": \"accusamus\",\n                        \"slug\": \"f2162cb6-e555-40ba-9b18-2f5190f4d723\"\n                    },\n                    {\n                        \"id\": 38,\n                        \"name\": \"alias\",\n                        \"slug\": \"9aa269b7-b93f-4e7a-9071-29ccf0d31735\"\n                    }\n                ]\n            },\n            {\n                \"id\": 41,\n                \"title\": \"Iusto maxime quia cum commodi.\",\n                \"categories\": [\n                    {\n                        \"id\": 39,\n                        \"name\": \"doloribus\",\n                        \"slug\": \"052f1cf3-9aa1-4fa9-a8d8-91c3973b5f9c\"\n                    },\n                    {\n                        \"id\": 40,\n                        \"name\": \"nam\",\n                        \"slug\": \"90dd9829-382c-4417-a0bf-a093d8b0f00d\"\n                    },\n                    {\n                        \"id\": 41,\n                        \"name\": \"nobis\",\n                        \"slug\": \"18aee2cb-0445-45d5-8cab-6d7e1cedd5c9\"\n                    },\n                    {\n                        \"id\": 42,\n                        \"name\": \"repellat\",\n                        \"slug\": \"3bd16485-28e4-4ec4-90fc-4a40da53b94a\"\n                    },\n                    {\n                        \"id\": 43,\n                        \"name\": \"minus\",\n                        \"slug\": \"37eb4c2d-efe0-4117-af0e-ef126472afca\"\n                    },\n                    {\n                        \"id\": 44,\n                        \"name\": \"autem\",\n                        \"slug\": \"def0b067-05d2-46f4-a25b-758d5ea1f7cf\"\n                    },\n                    {\n                        \"id\": 45,\n                        \"name\": \"quod\",\n                        \"slug\": \"c985b9da-6ef6-4db8-8460-3503a6cf47d7\"\n                    },\n                    {\n                        \"id\": 46,\n                        \"name\": \"repudiandae\",\n                        \"slug\": \"dfef151f-86f0-4d1e-a1bd-f5fd2acf3d3f\"\n                    },\n                    {\n                        \"id\": 47,\n                        \"name\": \"sit\",\n                        \"slug\": \"d1c2d3fd-3681-4ee2-8f87-47f4edb95129\"\n                    },\n                    {\n                        \"id\": 48,\n                        \"name\": \"sint\",\n                        \"slug\": \"ef38812e-bf01-4037-84d4-2fa79718c2db\"\n                    },\n                    {\n                        \"id\": 49,\n                        \"name\": \"temporibus\",\n                        \"slug\": \"89c24f6b-025a-496f-a924-1d399035b725\"\n                    },\n                    {\n                        \"id\": 50,\n                        \"name\": \"aliquam\",\n                        \"slug\": \"28b1bbb8-4700-495e-b33d-42d91f15cf51\"\n                    },\n                    {\n                        \"id\": 51,\n                        \"name\": \"explicabo\",\n                        \"slug\": \"bfdb6638-3f10-4301-ac7c-70d771c8a8aa\"\n                    },\n                    {\n                        \"id\": 52,\n                        \"name\": \"vel\",\n                        \"slug\": \"08cce3fb-5c17-4182-8167-13cbead6993f\"\n                    },\n                    {\n                        \"id\": 53,\n                        \"name\": \"quo\",\n                        \"slug\": \"6fb2b336-4116-485f-a724-51e2ec770f3c\"\n                    },\n                    {\n                        \"id\": 54,\n                        \"name\": \"eius\",\n                        \"slug\": \"336376e2-c3c0-4c5e-9ce6-6ba7527a274c\"\n                    },\n                    {\n                        \"id\": 55,\n                        \"name\": \"suscipit\",\n                        \"slug\": \"bfae15f6-6585-4c33-9a06-9db0dd42507a\"\n                    },\n                    {\n                        \"id\": 56,\n                        \"name\": \"pariatur\",\n                        \"slug\": \"30a5d8cd-5909-4a56-8b27-f1010017c744\"\n                    },\n                    {\n                        \"id\": 57,\n                        \"name\": \"rerum\",\n                        \"slug\": \"239e6d8c-d81a-48bf-ac26-366e11c8334d\"\n                    }\n                ]\n            },\n            {\n                \"id\": 47,\n                \"title\": \"Article Title Test Updated\",\n                \"categories\": [\n                    {\n                        \"id\": 116,\n                        \"name\": \"impedit\",\n                        \"slug\": \"1ef2c47f-5c4f-45fd-8675-c9df5d814733\"\n                    }\n                ]\n            },\n            {\n                \"id\": 48,\n                \"title\": \"Quae reiciendis qui atque voluptatibus est ut dicta.\",\n                \"categories\": [\n                    {\n                        \"id\": 117,\n                        \"name\": \"asperiores\",\n                        \"slug\": \"6e70701b-c02a-4a17-a172-1c706a138dc3\"\n                    }\n                ]\n            },\n            {\n                \"id\": 50,\n                \"title\": \"Article Title Test\",\n                \"categories\": [\n                    {\n                        \"id\": 118,\n                        \"name\": \"ab\",\n                        \"slug\": \"ff0e3755-1c5c-48bb-b07c-0ac713d99648\"\n                    }\n                ]\n            },\n            {\n                \"id\": 52,\n                \"title\": \"Nam cumque consequuntur rem illo.\",\n                \"categories\": [\n                    {\n                        \"id\": 120,\n                        \"name\": \"nisi\",\n                        \"slug\": \"85db4c02-64f8-47b0-9c29-afea90af8340\"\n                    }\n                ]\n            }\n        ],\n        \"pagination\": {\n            \"total\": 17,\n            \"perPage\": 10,\n            \"currentPage\": 2\n        },\n        \"randomizedOrder\": \"43,56,38,44,51,39,55,42,54,46,48,50,52,37,47,41,40\"\n    },\n    \"code\": 200\n}"
+										}
+									]
+								},
+								{
+									"name": "view",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/{{version}}/user/articles/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"{{version}}",
+												"user",
+												"articles",
+												"3"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/{{version}}/user/articles/3",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"{{version}}",
+														"user",
+														"articles",
+														"3"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 20:37:35 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sat, 23 Nov 2024 20:37:35 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.1.17"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"version\": 1,\n    \"data\": {\n        \"id\": 3,\n        \"title\": \"Article Title test updated\",\n        \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in elementum quam, at aliquam neque. Donec fermentum rutrum condimentum. Donec feugiat lectus eget scelerisque mollis. Phasellus interdum, felis sed tempus iaculis, purus urna sodales ante, ultricies porta sapien urna vitae neque. Nullam nec hendrerit tortor, in rutrum nibh. Sed eget porttitor mi. Nam dapibus laoreet nisi sed iaculis. Duis tempus commodo blandit. Donec semper sem eu felis luctus, vitae sodales enim maximus. Curabitur bibendum nisi ac felis tempor dictum. Vestibulum dictum ante eget nisi commodo, vel convallis leo rhoncus. Maecenas efficitur dictum congue. Etiam id porta lectus. Vestibulum at ante convallis, malesuada justo ut, molestie tortor. Aliquam aliquet id erat et ultricies. Cras in nunc fringilla, aliquam justo ac, maximus purus.\"\n    },\n    \"code\": 200\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "version",
+			"value": "v1",
+			"type": "string"
+		}
+	]
+}
