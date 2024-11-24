@@ -72,4 +72,26 @@ class Controller extends BaseController
                 "previousPage" => $paginator->previousPageUrl()
             ]];
     }
+
+    /**
+     * @param object $data
+     * @param int $total
+     * @param int $perPage
+     * @param int $page
+     * @return array
+     */
+    #[ArrayShape(['items' => "object", "pagination" => "array"])]
+    protected function formatRandomPaginationData(object $data, int $total=0, int $perPage = 10 , int $page = 1 ): array
+    {
+        return [
+            'items' => $data,
+            "pagination" => [
+                "total" => $total,
+                "perPage" => $perPage,
+                "currentPage" => $page,
+                "nextPage" => null,
+                "previousPage" => null
+            ]];
+    }
+
 }
