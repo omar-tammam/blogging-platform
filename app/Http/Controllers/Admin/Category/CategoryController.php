@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Admin\Category;
 
 use App\Enum\HttpStatusCodeEnum;
 use App\Enum\PaginationEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Category\CategoryFilter;
 use App\Http\Requests\Category\AddEditCategoryRequest;
-use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Admin\Category\CategoryResource;
 use App\Services\Category\CategoryService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

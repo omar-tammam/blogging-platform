@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Resources\Article;
+namespace App\Http\Resources\Admin\Article;
 
-use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Admin\Category\CategoryResource;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;

@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Article;
+namespace App\Http\Controllers\Admin\Article;
 
 use App\Enum\HttpStatusCodeEnum;
 use App\Enum\PaginationEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Article\ArticleFilter;
+use App\Http\Filters\Article\ArticleViewerFilter;
 use App\Http\Requests\Article\AddEditArticleRequest;
-use App\Http\Resources\Article\ArticleResource;
+use App\Http\Resources\Admin\Article\ArticleDetailsResource;
+use App\Http\Resources\Admin\Article\ArticleResource;
+use App\Http\Resources\Admin\Article\ArticleViewerResource;
+use App\Models\User;
 use App\Services\Article\ArticleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,7 +19,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Throwable;
 
-class ArticleController extends Controller
+class ArticleAdminController extends Controller
 {
     /**
      * @var ArticleService
@@ -52,7 +56,7 @@ class ArticleController extends Controller
     public function show(Request $request): mixed
     {
         $resource = $this->service->firstOrFailBy(['id' => $request->id] , withCount: ['viewers']);
-        return $this->response(new ArticleResource($resource), HttpStatusCodeEnum::OK);
+        return $this->response(new ArticleDetailsResource($resource), HttpStatusCodeEnum::OK);
     }
 
 
@@ -63,7 +67,8 @@ class ArticleController extends Controller
      */
     public function store(AddEditArticleRequest $request): JsonResponse
     {
-        $request->merge(['created_by' => 1]); //temp code
+        $user = User::first() ?? User::factory()->create(); //temp code
+        $request->merge(['created_by' => $user->id]); //temp code
         $resource = $this->service->add($request->all());
         return $this->response(new ArticleResource($resource), HttpStatusCodeEnum::CREATED);
     }
@@ -77,7 +82,8 @@ class ArticleController extends Controller
      */
     public function update(AddEditArticleRequest $request): JsonResponse
     {
-        $request->merge(['created_by' => 1]); //temp code
+        $user = User::first() ?? User::factory()->create();
+        $request->merge(['created_by' => $user->id]); //temp code
         $resource = $this->service->update($request->id, $request->all());
         return $this->response(new ArticleResource($resource), HttpStatusCodeEnum::OK);
     }
@@ -94,5 +100,20 @@ class ArticleController extends Controller
         return $this->response([], HttpStatusCodeEnum::OK, trans('common.resource_deleted_successfully'));
     }
 
+
+    /**
+     * @param Request $request
+     * @return mixed
+     * @throws Throwable
+     */
+    public function showViewers(Request $request, ArticleViewerFilter $filter): mixed
+    {
+        $paginator = $this->service->articleViewers(
+            $request->get('page', PaginationEnum::PAGE),
+            $request->get('perPage', PaginationEnum::LIMIT),
+            $filter);
+
+        return $this->response($this->formatPaginationData(ArticleViewerResource::collection($paginator), $paginator), HttpStatusCodeEnum::OK);
+    }
 
 }

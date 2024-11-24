@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Resources\Category;
+namespace App\Http\Resources\Admin\Article;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
-class CategoryResource extends JsonResource
+class ArticleViewerResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,11 +17,11 @@ class CategoryResource extends JsonResource
      */
     public function toArray($request): array|JsonSerializable|Arrayable
     {
-
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'slug' => $this->slug,
+            'logId' => $this->id,
+            'viewerIp' => $this->viewer_ip,
+            'articleId' => $this->article_id,
+            'createdAt' => $this->created_at,
         ];
     }
 }
