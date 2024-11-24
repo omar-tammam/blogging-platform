@@ -67,7 +67,7 @@ class ArticleAdminController extends Controller
      */
     public function store(AddEditArticleRequest $request): JsonResponse
     {
-        $user = User::first() ?? User::factory()->create(); //temp code
+        $user = User::first() ?? User::factory()->create(); //temp code will be replaced with auth()->user()
         $request->merge(['created_by' => $user->id]); //temp code
         $resource = $this->service->add($request->all());
         return $this->response(new ArticleResource($resource), HttpStatusCodeEnum::CREATED);
@@ -82,7 +82,7 @@ class ArticleAdminController extends Controller
      */
     public function update(AddEditArticleRequest $request): JsonResponse
     {
-        $user = User::first() ?? User::factory()->create();
+        $user = User::first() ?? User::factory()->create(); //temp code will be replaced with auth()->user()
         $request->merge(['created_by' => $user->id]); //temp code
         $resource = $this->service->update($request->id, $request->all());
         return $this->response(new ArticleResource($resource), HttpStatusCodeEnum::OK);
