@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Resources\User\Article;
+
+use App\Http\Resources\Admin\Category\CategoryResource;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use JsonSerializable;
+
+class ArticleDetailsResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param Request $request
+     * @return array|Arrayable|JsonSerializable
+     */
+    public function toArray($request): array|JsonSerializable|Arrayable
+    {
+
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'content' => $this->content,
+            'categories' => CategoryResource::collection($this->whenLoaded('categories'))
+        ];
+    }
+}

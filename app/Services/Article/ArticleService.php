@@ -34,5 +34,17 @@ class ArticleService extends BaseService
     }
 
 
-  
+    /**
+     * @param int $id
+     * @param string $ip
+     * @return mixed
+     * @throws Throwable
+     */
+    public function preview(int $id, string $ip): mixed
+    {
+        $resource = $this->firstOrFailBy(['id' => $id]);
+        //TODO: run job to add viewer to article with the articleId and viewerIp
+        app(ArticleViewerService::class)->addViewer($id, $ip);
+        return $resource;
+    }
 }

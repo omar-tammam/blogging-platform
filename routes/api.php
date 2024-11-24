@@ -54,6 +54,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'user'], function () {
         Route::group(['prefix' => 'articles'], function () {
             Route::get('/', [ArticleUserController::class, 'index']);
+            Route::get('/{id}', [ArticleUserController::class, 'preview']);
         });
 
     });

@@ -41,6 +41,17 @@ class ArticleUserController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return mixed
+     * @throws Throwable
+     */
+    public function preview(Request $request): mixed
+    {
+        $resource = $this->service->preview($request->id, $request->ip());
+        return $this->response(new ArticleDetailsResource($resource), HttpStatusCodeEnum::OK);
+    }
+
 
 
 }
