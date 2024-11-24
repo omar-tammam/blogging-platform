@@ -6,8 +6,7 @@ use App\Http\Filters\Filter;
 use App\Repositories\BaseRepository;
 use Closure;
 use Illuminate\Contracts\Queue\EntityNotFoundException;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
+
 use Throwable;
 
 class BaseService

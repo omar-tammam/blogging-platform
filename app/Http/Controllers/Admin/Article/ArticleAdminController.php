@@ -103,8 +103,8 @@ class ArticleAdminController extends Controller
 
     /**
      * @param Request $request
+     * @param ArticleViewerFilter $filter
      * @return mixed
-     * @throws Throwable
      */
     public function showViewers(Request $request, ArticleViewerFilter $filter): mixed
     {
