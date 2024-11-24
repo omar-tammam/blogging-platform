@@ -18,9 +18,11 @@ class ArticleFilter extends Filter
             return $this->builder;
         }
 
-        return $this->builder->whereHas('categories', function ($query) use ($categories) {
-            $query->whereIn('id', $categories);
+         $this->builder->whereHas('categories', function ($query) use ($categories) {
+            $query->whereIn('article_category.category_id', $categories);
         });
+
+        return $this->builder;
     }
 
     /**
@@ -29,7 +31,7 @@ class ArticleFilter extends Filter
      */
     public function search(string $search): mixed
     {
-        return $this->builder->where('title', 'like', "%$search%");
+        return $this->builder->where('articles.title', 'like', "%$search%");
     }
 
 }
