@@ -48,7 +48,15 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('/', [ArticleAdminController::class, 'showViewers']);
         });
     });
-    
+
+
+    //-------------- User routes   ----------------//
+    Route::group(['prefix' => 'user'], function () {
+        Route::group(['prefix' => 'articles'], function () {
+            Route::get('/', [ArticleUserController::class, 'index']);
+        });
+
+    });
 
 
 });
