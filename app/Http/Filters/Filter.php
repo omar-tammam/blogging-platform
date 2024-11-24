@@ -17,6 +17,8 @@ abstract class Filter
      */
     protected Builder $builder;
 
+    protected array $conditions = [];
+
     /**
      * @param Request $request
      */
@@ -24,6 +26,7 @@ abstract class Filter
     {
         $this->request = $request;
     }
+
 
     /**
      * @param Builder $builder
@@ -39,6 +42,10 @@ abstract class Filter
             }
         });
 
+        foreach ($this->conditions as $field => $values) {
+            $this->builder->whereIn($field, $values);
+        }
+
         return $this->builder;
     }
 
@@ -51,5 +58,9 @@ abstract class Filter
         return array_filter($this->request->all());
     }
 
+    public function addCondition(string $field, array $values): void
+    {
+        $this->conditions[$field] = $values;
+    }
 
 }
