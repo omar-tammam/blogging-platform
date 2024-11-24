@@ -2,11 +2,14 @@
 
 namespace App\Services;
 
+use App\Enum\PaginationEnum;
 use App\Http\Filters\Filter;
+use App\Models\Article\Article;
 use App\Repositories\BaseRepository;
 use Closure;
 use Illuminate\Contracts\Queue\EntityNotFoundException;
 
+use Psy\Util\Str;
 use Throwable;
 
 class BaseService
@@ -43,6 +46,37 @@ class BaseService
     }
 
 
+    /**
+     * @param int $page
+     * @param int $perPage
+     * @param Filter $filter
+     * @param array $columns
+     * @param array $with
+     * @param array $withCount
+     * @param string|null $randomizedOrder
+     * @return mixed
+     */
+    public function randomPaginate(int $page, int $perPage, Filter $filter, array $columns = ["*"], array $with=[], array $withCount=[], ?string $randomizedOrder = null): mixed
+    {
+        if (!$randomizedOrder) {
+            $randomizedOrder = $this->repository->randomizeOrder($filter);
+        }else {
+            $randomizedOrder = explode(',', $randomizedOrder);
+        }
+
+        $offset = ($page - 1) * $perPage;
+        $paginatedIds = array_slice($randomizedOrder, $offset, $perPage);
+
+        $filter->addCondition('id', $paginatedIds); // Add condition for article IDs
+
+        $paginator = $this->paginate(1, $perPage, $filter, columns: $columns, with: $with, withCount: $withCount);
+
+        $randomizedOrderStr = implode(',', $randomizedOrder);
+        return [
+            'paginator' => $paginator,
+            'randomizedOrder' =>$randomizedOrderStr
+        ];
+    }
     /**
      * @param int $page
      * @param int $perPage

@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Throwable;
 
 abstract class BaseRepository
@@ -311,8 +309,18 @@ abstract class BaseRepository
      * @param array $with
      * @return mixed
      */
-    public function findAllByWhereIn(string $column, array $ids, array $with=[]): mixed
+    public function findAllByWhereIn(string $column, array $ids, array $with = []): mixed
     {
         return $this->model->whereIn($column, $ids)->with($with)->get();
+    }
+
+
+    /**
+     * @param Filter $filter
+     * @return mixed
+     */
+    public function randomizeOrder( Filter $filter): mixed
+    {
+        return $this->model->filter($filter)->pluck('id')->shuffle()->toArray();
     }
 }
