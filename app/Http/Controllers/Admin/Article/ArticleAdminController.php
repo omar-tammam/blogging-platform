@@ -55,7 +55,7 @@ class ArticleAdminController extends Controller
      */
     public function show(Request $request): mixed
     {
-        $resource = $this->service->firstOrFailBy(['id' => $request->id] , withCount: ['viewers']);
+        $resource = $this->service->firstOrFailBy(['id' => $request->id] , withCount: ['viewers'], with: ['categories']);
         return $this->response(new ArticleDetailsResource($resource), HttpStatusCodeEnum::OK);
     }
 
